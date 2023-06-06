@@ -1,0 +1,33 @@
+sequenceDiagram
+    participant browser
+    participant server
+
+browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/new_note
+    activate server
+    server-->>browser: Document / Redirect
+    Note right of browser: Browser executes /new_note to start sending the note to server
+    deactivate server
+
+browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
+    activate server
+    server-->>browser: Document
+    Note left of server: Server return the html file that contains a header "Note", textfield and submit button
+    deactivate server
+
+browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+    activate server
+    server-->>browser: CSS
+    Note left of server: Plain CSS file
+    deactivate server
+
+browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
+    activate server
+    server-->>browser: Javascript
+    Note left of server: Plain Javascript file
+    deactivate server
+
+browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    activate server
+    server-->>browser: JSON
+    Note left of server: JSON which contains all the notes saved
+    deactivate server
